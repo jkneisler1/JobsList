@@ -60,6 +60,7 @@ hr {
         <h2>Search Job Results</h2>
         <br />
         <div th:each="job : ${jobs}">
+            <hr>
             <p><div class="alignLabel"><b>Title:</b></div> <span th:text="${job.title}"></span></p>
             <p><div class="alignLabel"><b>Author:</b></div> <span th:text="${job.author}"></span></p>
             <p><div class="alignLabel"><b>Phone:</b></div> <span th:text="${job.phone}"></span></p>

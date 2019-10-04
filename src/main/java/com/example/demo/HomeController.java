@@ -34,7 +34,7 @@ public class HomeController {
     @PostMapping("/procjob")
     public String processForm(@ModelAttribute Job job, @RequestParam(name="postedDate") String postedDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-        System.out.println(postedDate);
+        // System.out.println(postedDate);
         String formattedDate = postedDate.substring(1, postedDate.length());
         LocalDateTime dateTime = LocalDateTime.parse(formattedDate, formatter);
         job.setPostedDate(dateTime);

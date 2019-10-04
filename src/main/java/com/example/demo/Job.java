@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+// import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,7 +20,8 @@ public class Job {
 
     private String title;           // Job title
     private String description;     // Job description
-    private String author;          // Person submitting the jop
+    private String author;          // Person submitting the job
+    // @Size(min=12, max=12)        // Want the phone number to be "123-456-7890" in length
     private String phone;           // Author's phone number
 
 
