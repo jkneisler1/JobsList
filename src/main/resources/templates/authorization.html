@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Job Input Form</title>
+    <title>Authorization Page</title>
 
     <!-- Link to the bootstrap stylesheet:  insert this just before the </head> tag  (this version fits on a page) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -11,27 +11,27 @@
     <!-- END Link to the bootstrap stylesheet -->
 </head>
 <style>
-hr {
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: inset;
-    border-width: 5px;
-}
+    hr {
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 5px;
+    }
 
-.marginAll {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-right: 150px;
-    margin-left: 80px;
-}
+    .marginAll {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        margin-right: 150px;
+        margin-left: 80px;
+    }
 
-.alignLabel {
-    display:inline-block;
-    width:200px;
-}
+    .alignLabel {
+        display:inline-block;
+        width:200px;
+    }
 </style>
 <body>
     <!-- Navigation Bar -->
@@ -45,8 +45,8 @@ hr {
                 <li class="nav-item">
                     <a class="nav-link" href="/">List Jobs</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/add">Add Jobs<span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add">Add Jobs</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" th:action="@{/procsearch}" method="post">
@@ -55,25 +55,25 @@ hr {
             </form>
         </div>
     </nav>
+<!-- ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +  -->
     <div class="container">
         <div th:replace="base :: header"></div>
         <h2>Job Input Form</h2>
         <br />
-        <form th:action="@{/procjob}" th:object="${job}" method="post">
-            <input type="hidden" th:field="*{id}" />
-            <input type="hidden" th:field="*{postedDate}" />
-            <div class="alignLabel"><b>Title:</b></div> <input type="text" placeholder="Title" th:field="*{title}" /><br />
+        <form th:action="@{/proc_user_search}" th:object="${jobs}" method="post">
+            <!-- <input type="hidden" th:field="*{id}" /> -->
+<!-- ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +  -->
+            <!-- <input type="hidden" th:field="*{postedDate}" /> -->
             <div class="alignLabel"><b>Author:</b></div> <input type="text" placeholder="Author" th:field="*{author}" /><br />
-            <div class="alignLabel"><b>Phone:</b> <i>(123-456-7890)</i></div> <input type="text" placeholder="Phone" th:field="*{phone}" /><br />
-            <div class="alignLabel"><b>Posted Date and Time:</b></div> <input type="datetime-local" name="postedDate" /><br />
-            <div class="alignLabel"><b>Description:</b></div> <textarea rows="3" cols="50" plactholder="description" th:field="*{description}"></textarea><br />
+            <div class="alignLabel"><b>Password:</b> </div> <input type="text" placeholder="Password" name="password" /><br />
             <br /><br />
 
-            <input type="submit" onclick="alerts()" value="Submit">
+            <input type="submit" onclick="confirmation()" value="Submit">
         </form>
         <hr>
         <div th:replace="base :: footer"></div>
     </div>
+
     <!-- JS code: insert this just before the </body> tag  (this version fits on a page) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

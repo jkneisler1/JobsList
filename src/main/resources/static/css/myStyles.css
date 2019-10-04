@@ -1,0 +1,62 @@
+div.c {
+	text-align: center;
+}
+div.r {
+	text-align: right;
+}
+div.l {
+	text-align: left;
+}
+body {
+	background-image: url("../images/")
+}
+.wrapper {
+	text-align: center;
+}
+.wrapper ul {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	/* For IE, the outcast */
+	zoom:1;
+	*display: inline;
+}
+.wrapper li {
+	text-align: left;
+}
+
+html {
+	background: url(../images/ChickenSoup.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+body {
+	background-image: url("../images/ChickenSoup.jpg")
+}
+	
+.btn-group button {
+  background-color: #4CAF50; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}

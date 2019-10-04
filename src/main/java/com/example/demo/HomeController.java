@@ -42,4 +42,17 @@ public class HomeController {
 
         return "redirect:/";
     }
+
+    @PostMapping("/proc_user_search")
+    public String processUserSearch(Model model, @RequestParam(name="search") String search) {
+        model.addAttribute("jobs", jobRepository.findJobByAuthor(search));
+        return "returnuserlist";
+    }
+
+    @PostMapping("/jobdelete")
+    public String jobDelete(Model model, @ModelAttribute Job job, String search) {
+        Long remove = job.getId();
+        model.addAttribute("jobs", jobRepository.removeById(remove));
+        return "returnuserlist";
+    }
 }

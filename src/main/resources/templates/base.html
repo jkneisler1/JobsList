@@ -15,8 +15,23 @@
         <h1>Job Locator Service</h1>
     </div>
 
+    <div th:fragment="btngp">
+        <div class="btn-group">
+            <button type="submit" placeholder>Edit</button>
+            <button type="submit">Delete</button>
+            <!-- <button>Return</button> -->
+        </div>
+    </div>
+
     <div th:fragment="clock">
         <p><b>NOTE:</b> All times use the 24-hour clock.</p>
+        <!-- <a href="/authorization">Manage Your Jobs</a> -->
+        <div>
+            <form th:action="@{/proc_user_search}" method="post">
+                <input placeholder="Enter Your Name" name="search">
+                <button type="submit">Retrieve Your Jobs</button>
+            </form>
+        </div>
     </div>
 
     <div th:fragment="footer">
