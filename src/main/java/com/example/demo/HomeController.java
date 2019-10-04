@@ -52,6 +52,7 @@ public class HomeController {
     @PostMapping("/jobdelete")
     public String jobDelete(Model model, @ModelAttribute Job job, String search) {
         Long remove = job.getId();
+        System.out.println(remove);
         model.addAttribute("jobs", jobRepository.removeById(remove));
         return "returnuserlist";
     }
