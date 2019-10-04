@@ -36,7 +36,7 @@ hr {
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Jobs-<font size="+2">&#x1D19;</font>-Us</a>
+        <a class="navbar-brand" href="#">Jobs-<span style="font-size:30px">&#x1D19;</span>-Us</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -50,7 +50,7 @@ hr {
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" th:action="@{/procsearch}" method="post">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search Airlines" aria-label="Search Airlines" name="search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search By Title" aria-label="Search Title" name="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -63,10 +63,10 @@ hr {
             <input type="hidden" th:field="*{id}" />
             <input type="hidden" th:field="*{postedDate}" />
             <div class="alignLabel"><b>Title:</b></div> <input type="text" placeholder="Title" th:field="*{title}" /><br />
-            <div class="alignLabel"><b>Description:</b></div> <input type="text" placeholder="Description" th:field="*{description}" /><br />
             <div class="alignLabel"><b>Author:</b></div> <input type="text" placeholder="Author" th:field="*{author}" /><br />
-            <div class="alignLabel"><b>Posted Date:</b></div> <input type="datetime-local" name="postedDate" /><br />
-            <div class="alignLabel"><b>Phone:</b></div> <input type="number" placeholder="Phone" th:field="*{phone}" />
+            <div class="alignLabel"><b>Phone:</b></div> <input type="text" placeholder="Phone" th:field="*{phone}" /><br />
+            <div class="alignLabel"><b>Posted Date and Time:</b></div> <input type="datetime-local" name="postedDate" /><br />
+            <div class="alignLabel"><b>Description:</b></div> <textarea rows="3" cols="50" plactholder="description" th:field="*{description}"></textarea><br />
             <br /><br />
 
             <input type="submit" onclick="confirmation()" value="Submit">
