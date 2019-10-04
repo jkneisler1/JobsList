@@ -71,15 +71,9 @@
 
         <form th:action="@{/jobdelete}" method="post">
             <button >Delete this job</button>
-            <div>
-                <input type="hidden" th:field="*{id}" />
-                <span th:text="${job.id}"></span>
-                <span th:text="${job.title}"></span>
-                <span th:text="${job.author}"></span>
-                <span th:text="${job.phone}">
-                <span th:text="${#temporals.format(job.postedDate, 'dd-MM-yyyy HH:mm')}"></span>
-                <span th:text="${job.description}"></span>
-            </div>
+
+            <input type="hidden" th:object="${job}" placeholder="search" name="search"/>
+
         </form>
 
         <!-- <div th:replace="base :: btngp"></div>
