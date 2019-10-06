@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -56,7 +55,8 @@ public class HomeController {
         System.out.println(id);
         String returnStr = "";
         if (action.equals("edit")) {
-            model.addAttribute("job", jobRepository.findById(id).get());
+            if (jobRepository.findById(id).isPresent())
+                model.addAttribute("job", jobRepository.findById(id).get());
             returnStr = "jobform";
         }
         else if (action.equals("delete")) {
@@ -64,7 +64,8 @@ public class HomeController {
             returnStr = "redirect:/";
         }
         else if (action.equals("details")) {
-            model.addAttribute("job", jobRepository.findById(id).get());
+            if (jobRepository.findById(id).isPresent())
+                model.addAttribute("job", jobRepository.findById(id).get());
             returnStr = "list";
         }
         return returnStr;

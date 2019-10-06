@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -53,27 +53,27 @@ hr {
             <input type="hidden" th:field="*{postedDate}" />
             <div class="row">
                 <div class="col-md-3"><b>Title:</b></div>
-                <div class="col-md-9"><input type="text" placeholder="Title" th:field="*{title}" /></div>
+                <div class="col-md-9"><label for="title">Title</label><input id="title" type="text" placeholder="Title" th:field="*{title}" /></div>
             </div>
             <br />
             <div class="row">
                 <div class="col-md-3"><b>Author:</b></div>
-                <div class="col-md-9"><input type="text" placeholder="Author" th:field="*{author}" /></div>
+                <div class="col-md-9"><label for="author">Author</label><input id="author" type="text" placeholder="Author" th:field="*{author}" /></div>
             </div>
             <br />
             <div class="row">
                 <div class="col-md-3"><b>Phone:</b> <i>(123-456-7890)</i></div>
-                <div class="col-md-9"><input type="text" placeholder="Phone" th:field="*{phone}" /></div>
+                <div class="col-md-9"><label for="phone">Phone</label><input id="phone" type="text" placeholder="Phone" th:field="*{phone}" /></div>
             </div>
             <br />
             <div class="row">
                 <div class="col-md-3"><b>Posted Date and Time:</b></div>
-                <div class="col-md-9"><input type="datetime-local" th:field="*{postedDate}" name="postedDate" /></div>
+                <div class="col-md-9"><label for="date">Date</label><input id="date" type="datetime-local" th:field="*{postedDate}" name="postedDate" /></div>
             </div>
             <br />
             <div class="row">
                 <div class="col-md-3"><b>Description:</b></div>
-                <div class="col-md-9"><textarea rows="3" cols="50" plactholder="description" th:field="*{description}"></textarea></div>
+                <div class="col-md-9"><label for="desc">Description</label><textarea id="desc" rows="3" cols="50" th:field="*{description}"></textarea></div>
             </div>
             <br /><br />
 

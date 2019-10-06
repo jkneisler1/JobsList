@@ -48,7 +48,7 @@ hr {
         <h2>Search Jobs</h2>
         <br />
         <form th:action="@{/procsearch}" method="post">
-            <input type="text" placeholder="Search By Title" name="search" />
+            <label for="sbt">Search By Title</label><input id="sbt" type="text" placeholder="Search By Title" name="search" />
             <button type="submit">Search</button>
         </form>
         <br />
