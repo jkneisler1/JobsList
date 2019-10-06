@@ -5,24 +5,15 @@
     <title>Base</title>
 
     <!-- Link to the bootstrap stylesheet:  insert this just before the </head> tag  (this version fits on a page) -->
-    <div th:fragement="bootstrapStylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
-    </div>
     <!-- END Link to the bootstrap stylesheet -->
 </head>
 <body>
+
     <div th:fragment="header">
         <h1>Job Locator Service</h1>
-    </div>
-
-    <div th:fragment="btngp">
-        <div class="btn-group">
-            <button type="submit" placeholder>Edit</button>
-            <button type="submit">Delete</button>
-            <!-- <button>Return</button> -->
-        </div>
     </div>
 
     <div th:fragment="userSearch">
@@ -34,6 +25,41 @@
                 <button type="submit">Retrieve Your Jobs</button>
             </form>
         </div>
+        <br />
+    </div>
+
+    <div th:fragment="displayInfo">
+        <hr>
+        <p>
+            <div class="row">
+                <div class="col-md-3"><b>Title:</b></div>
+                <div class="col-md-9" th:text="${job.title}"></div>
+            </div>
+        </p>
+        <p>
+            <div class="row">
+                <div class="col-md-3"><b>Author:</b></div>
+                <div class="col-md-9" th:text="${job.author}"></div>
+            </div>
+        </p>
+        <p>
+            <div class="row">
+                <div class="col-md-3"><b>Phone:</b></div>
+                <div class="col-md-9" th:text="${job.phone}"></div>
+            </div>
+        </p>
+        <p>
+            <div class="row">
+                <div class="col-md-3"><b>Posted Date and Time:</b></div>
+                <div class="col-md-9" th:text="${#temporals.format(job.postedDate, 'dd-MM-yyyy HH:mm')}"></div>
+            </div>
+        </p>
+        <p>
+            <div class="row">
+                <div class="col-md-3"><b>Description:</b></div>
+                <div class="col-md-9" th:text="${job.description}"></div>
+            </div>
+        </p>
     </div>
 
     <div th:fragment="userSearchNavBtn">

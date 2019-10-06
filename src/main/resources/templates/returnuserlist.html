@@ -8,29 +8,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
+    <!-- END Link to the bootstrap stylesheet -->
+
 </head>
 <style>
-    hr {
-        display: block;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-        margin-left: auto;
-        margin-right: auto;
-        border-style: inset;
-        border-width: 5px;
-    }
-
-    .marginAll {
-        margin-top: 100px;
-        margin-bottom: 100px;
-        margin-right: 150px;
-        margin-left: 80px;
-    }
-
-    .alignLabel {
-        display:inline-block;
-        width:200px;
-    }
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 5px;
+}
 </style>
 <body>
     <!-- Navigation Bar -->
@@ -48,93 +38,38 @@
                     <a class="nav-link" href="/add">Add Jobs</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0" th:action="@{/procsearch}" method="post">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search By Title" aria-label="Search Title" name="search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+
+            <div th:replace="base :: userSearchNavBtn"></div>
+
+            <div th:replace="base :: titleSearchNavBtn"></div>
         </div>
     </nav>
-<div class="container">
-    <div th:replace="base :: header"></div>
-    <br />
-    <h2>Manage Your Jobs</h2>
-    <br />
-    <div th:each="job : ${jobs}">
-        <hr>
-        <!-- <form th:action="@{/jobdelete/{id} (id=${job.id})}" method="post"> -->
-        <form th:action="@{/jobManage/{id} (id=${job.id})}" method="post">
-            <p><div class="alignLabel"><b>Title:</b></div> <span th:text="${job.title}"></span></p>
-            <p><div class="alignLabel"><b>Author:</b></div> <span th:text="${job.author}"></span></p>
-            <p><div class="alignLabel"><b>Phone:</b></div> <span th:text="${job.phone}"></span></p>
-            <p><div class="alignLabel"><b>Posted Date and Time:</b></div> <span th:text="${#temporals.format(job.postedDate, 'dd-MM-yyyy HH:mm')}"></span></p>
-            <p><div class="alignLabel"><b>Description:</b></div> <span th:text="${job.description}"></span></p>
-            <br />
-            <div class="btn-group" style="width:100%">
-                <input type="hidden" th:value="${job.author}"/>
-<!-- ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +  -->
-                <button id="details" style="width:33%" type="submit" value="details" name="action">Show Details</button>
-                <button id="edit" style="width:33%" type="submit" value="edit" name="action">Edit Job</button>
-                <button id="delete" style="width:33%" type="submit" value="delete" name="action">Delete Job</button>
-            </div>
-        </form>
-
-        <!-- <div th:replace="base :: btngp"></div>
-        <input type="hidden" th:field="*{id}" type="search" placeholder="Delete By Id" name="search"/>
-        <div class="btn-group" style="width:100%">
-            <button style="width:50%">Edit this job</button>
-            <form th:action="@{/jobdelete}" method="post">
-                <button style="width:50%" type="search" placeholder="Delete By Id" name="search">Delete this job</button>
+    <div class="container">
+        <div th:replace="base :: header"></div>
+        <br />
+        <h2>Manage Your Jobs</h2>
+        <br />
+        <div th:each="job : ${jobs}">
+            <form th:action="@{/jobManage/{id} (id=${job.id})}" method="post">
+                <div th:replace="base :: displayInfo"></div>
+                <br />
+                <div class="btn-group" style="width:100%">
+                    <input type="hidden" th:value="${job.author}"/>
+                    <button id="details" style="width:33%" type="submit" value="details" name="action">Show Details</button>
+                    <button id="edit" style="width:33%" type="submit" value="edit" name="action">Edit Job</button>
+                    <button id="delete" style="width:33%" type="submit" value="delete" name="action">Delete Job</button>
+                </div>
             </form>
+
         </div>
-        <button type="search" placeholder="Delete By Id" name="search">Delete this job</button>
-         -->
-        <!--         <div class="btn-group">
-                   <div class="myedit">
-                        <form th:action="@{/jobedit}" th:object="${job}" method="post">
-                            <input type="hidden" th:field="*{id}" />
-                            <input type="hidden" th:field="*{postedDate}" />
-                            <div class="alignLabel"><b>Edit Title:</b></div> <input type="text" placeholder="Title" th:field="*{title}" /><br />
 
-                            <div class="alignLabel"><b>Edit Author:</b></div> <input type="text" placeholder="Author" th:field="*{author}" /><br />
-                            <div class="alignLabel"><b>Edit Phone:</b></div> <input type="text" placeholder="Phone" th:field="*{phone}" /><br />
-                            <div class="alignLabel"><b>Edit Date:</b></div> <input type="datetime-local" name="postedDate" th:field="*{postedDate}" /><br />
-                            <div class="alignLabel"><b>Edit Description:</b></div> <textarea rows="3" cols="50" plactholder="description" th:field="*{description}" ></textarea><br />
-                            <br /><br />
-
-                            <input type="submit" onclick="alerts()" value="Submit">
-                            <button>Edit this job</button>
-                        </form>
-
-                    </div>
-                    <div class="mydelete">
-                        <form th:action="@{/jobdelete}" th:object="${job}" method="post">
-                            <input type="hidden" th:field="*{id}" />
-                            <input type="submit" onclick="alerts()" value="Submit">
-                            <button>Delete this job</button>
-                        </form>
-                    </div>
-                </div>  -->
-
+        <hr>
+        <p><a href="/">Go Back To Jobs List</a></p>
+        <div th:replace="base :: footer"></div>
     </div>
+<!-- ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +  -->
 
-    <hr>
-    <p><a href="/">Go Back To Jobs List</a></p>
-    <div th:replace="base :: footer"></div>
-</div>
-
-<!-- JS code: insert this just before the </body> tag  (this version fits on a page) -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous">
-</script>
-<!-- END JS code -->
+    <!-- JS code: insert this just before the </body> tag -->
+    <div th:replace="base :: jsFooter"></div>
 </body>
 </html>

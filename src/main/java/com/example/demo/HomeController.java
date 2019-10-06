@@ -50,29 +50,6 @@ public class HomeController {
         return "returnuserlist";
     }
 
-    @RequestMapping("/jobupdate/{id}")
-    public String updateJob(@PathVariable("id") long id, Model model) {
-        model.addAttribute("job", jobRepository.findById(id).get());
-        return "jobform";
-    }
-
-    @PostMapping("/jobdelete/{id}")
-    public String jobDelete(@PathVariable("id") long id, Model model, String search) {
-        //String returnStr;
-        //String user = jobRepository.findById(id).get().getAuthor();
-        jobRepository.deleteById(id);
-        //if (search.equals("delete")) {
-        //    jobRepository.deleteById(id);
-        //    returnStr = "returnuserlist";
-        //}
-        //System.out.println(id);
-        //System.out.println(search);
-        //System.out.println(user);
-        //model.addAttribute("jobs", jobRepository.findJobByAuthor(user));
-        //return "returnuserlist";
-        return "redirect:/";
-    }
-
     @RequestMapping(value="/jobManage/{id}", method=RequestMethod.POST, params="action")
     public String jobManage(@PathVariable("id") long id, Model model, @RequestParam(value="action", required=true) String action) {
         System.out.println(action);
