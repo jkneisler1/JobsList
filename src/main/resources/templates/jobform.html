@@ -9,7 +9,6 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">
     <!-- END Link to the bootstrap stylesheet -->
-
 </head>
 <style>
 hr {
@@ -20,18 +19,6 @@ hr {
     margin-right: auto;
     border-style: inset;
     border-width: 5px;
-}
-
-.marginAll {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-right: 150px;
-    margin-left: 80px;
-}
-
-.alignLabel {
-    display:inline-block;
-    width:200px;
 }
 </style>
 <body>
@@ -88,14 +75,6 @@ hr {
                 <div class="col-md-3"><b>Description:</b></div>
                 <div class="col-md-9"><textarea rows="3" cols="50" plactholder="description" th:field="*{description}"></textarea></div>
             </div>
-
-            <!--
-            <div class="alignLabel"><b>Title:</b></div> <input type="text" placeholder="Title" th:field="*{title}" /><br />
-            <div class="alignLabel"><b>Author:</b></div> <input type="text" placeholder="Author" th:field="*{author}" /><br />
-            <div class="alignLabel"><b>Phone:</b> <i>(123-456-7890)</i></div> <input type="text" placeholder="Phone" th:field="*{phone}" /><br />
-            <div class="alignLabel"><b>Posted Date and Time:</b></div> <input type="datetime-local" th:field="*{postedDate}" name="postedDate" /><br />
-            <div class="alignLabel"><b>Description:</b></div> <textarea rows="3" cols="50" plactholder="description" th:field="*{description}"></textarea><br />
-            -->
             <br /><br />
 
             <input type="submit" onclick="alerts()" value="Submit">
@@ -107,6 +86,5 @@ hr {
 <!--^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +  -->
     <!-- JS code: insert this just before the </body> tag -->
     <div th:replace="base :: jsFooter"></div>
-
 </body>
 </html>
