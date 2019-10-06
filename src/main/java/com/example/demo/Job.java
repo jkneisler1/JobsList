@@ -15,7 +15,7 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime postedDate;
 
     private String title;           // Job title

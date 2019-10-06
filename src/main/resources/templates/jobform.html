@@ -65,7 +65,9 @@ hr {
             <div class="alignLabel"><b>Title:</b></div> <input type="text" placeholder="Title" th:field="*{title}" /><br />
             <div class="alignLabel"><b>Author:</b></div> <input type="text" placeholder="Author" th:field="*{author}" /><br />
             <div class="alignLabel"><b>Phone:</b> <i>(123-456-7890)</i></div> <input type="text" placeholder="Phone" th:field="*{phone}" /><br />
-            <div class="alignLabel"><b>Posted Date and Time:</b></div> <input type="datetime-local" name="postedDate" /><br />
+            <div class="alignLabel"><b>Posted Date and Time:</b></div> <input type="datetime-local" th:field="*{postedDate}" name="postedDate" /><br />
+<!--^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +    ^    +  -->
+            <!-- <div class="alignLabel"><b>Posted Date and Time:</b></div> <input type="datetime-local" name="postedDate" /><br /> -->
             <div class="alignLabel"><b>Description:</b></div> <textarea rows="3" cols="50" plactholder="description" th:field="*{description}"></textarea><br />
             <br /><br />
 

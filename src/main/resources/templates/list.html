@@ -59,7 +59,7 @@ hr {
         <h2>Search Jobs</h2>
         <br />
         <form th:action="@{/procsearch}" method="post">
-            <input type="text" placeholder="Search.." name="search">
+            <input type="text" placeholder="Search By Title" name="search">
             <button type="submit">Search</button>
         </form>
         <br />
@@ -74,7 +74,7 @@ hr {
             <p><div class="alignLabel"><b>Description:</b></div> <span th:text="${job.description}"></span></p>
         </div>
         <hr>
-        <div th:replace="base :: clock"></div>
+        <div th:replace="base :: userSearch"></div>
         <div th:replace="base :: footer"></div>
     </div>
     <!-- JS code: insert this just before the </body> tag  (this version fits on a page) -->

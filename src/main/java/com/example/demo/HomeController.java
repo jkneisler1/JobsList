@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -35,7 +36,7 @@ public class HomeController {
     public String processForm(@ModelAttribute Job job, @RequestParam(name="postedDate") String postedDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
         // System.out.println(postedDate);
-        String formattedDate = postedDate.substring(1, postedDate.length());
+        String formattedDate = postedDate.substring(postedDate.indexOf(',') + 1, postedDate.length());
         LocalDateTime dateTime = LocalDateTime.parse(formattedDate, formatter);
         job.setPostedDate(dateTime);
         jobRepository.save(job);
@@ -49,11 +50,46 @@ public class HomeController {
         return "returnuserlist";
     }
 
-    @PostMapping("/jobdelete")
-    public String jobDelete(Model model, @ModelAttribute Job job, String search) {
-        Long remove = job.getId();
-        System.out.println(remove);
-        model.addAttribute("jobs", jobRepository.removeById(remove));
-        return "returnuserlist";
+    @RequestMapping("/jobupdate/{id}")
+    public String updateJob(@PathVariable("id") long id, Model model) {
+        model.addAttribute("job", jobRepository.findById(id).get());
+        return "jobform";
+    }
+
+    @PostMapping("/jobdelete/{id}")
+    public String jobDelete(@PathVariable("id") long id, Model model, String search) {
+        //String returnStr;
+        //String user = jobRepository.findById(id).get().getAuthor();
+        jobRepository.deleteById(id);
+        //if (search.equals("delete")) {
+        //    jobRepository.deleteById(id);
+        //    returnStr = "returnuserlist";
+        //}
+        //System.out.println(id);
+        //System.out.println(search);
+        //System.out.println(user);
+        //model.addAttribute("jobs", jobRepository.findJobByAuthor(user));
+        //return "returnuserlist";
+        return "redirect:/";
+    }
+
+    @RequestMapping(value="/jobManage/{id}", method=RequestMethod.POST, params="action")
+    public String jobManage(@PathVariable("id") long id, Model model, @RequestParam(value="action", required=true) String action) {
+        System.out.println(action);
+        System.out.println(id);
+        String returnStr = "";
+        if (action.equals("edit")) {
+            model.addAttribute("job", jobRepository.findById(id).get());
+            returnStr = "jobform";
+        }
+        else if (action.equals("delete")) {
+            jobRepository.deleteById(id);
+            returnStr = "redirect:/";
+        }
+        else if (action.equals("details")) {
+            model.addAttribute("job", jobRepository.findById(id).get());
+            returnStr = "list";
+        }
+        return returnStr;
     }
 }
